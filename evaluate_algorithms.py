@@ -1,6 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import os
+import os,sys
+import tqdm
+if(len(sys.argv)==1):
+    testcase_num=1e5/5
+else:
+    testcase_num=sys.argv[1]
 yInsertionSort=[]
 yMergeSort=[]
 yStlSort=[]
@@ -8,13 +13,17 @@ x=[]
 os.system("build insertion_sort.cpp")
 os.system("build merge_sort.cpp")
 os.system("build stl_sort.cpp")
+#progress bar
+pbar = tqdm.tqdm(total=(3*testcase_num)/100)
 # generate test case for checking correctness of solution
 # open a file named IN and write test case one by one and run checker log as well
 def checker():
     f= open("OUT","r")
     data = f.readline().split()
     if(len(data)==1):
-        print("Accepted")
+        # print("Accepted")
+        # update the progress bar
+        pbar.update(1)
         return
     i=0
     flag=True
@@ -27,10 +36,12 @@ def checker():
         print("Rejected.\nExiting program")
         exit()
     else:
-        print("Accepted")
+        # print("Accepted")
+        # update the progress bar
+        pbar.update(1)
 
 numOfElement= 1
-while(numOfElement< 1e3):
+while(numOfElement< testcase_num):
     testcase= np.random.randint(1,1e9,size=(numOfElement))
     f= open("IN","w")
     f.write(str(numOfElement)+'\n')
