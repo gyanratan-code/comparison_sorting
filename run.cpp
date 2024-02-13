@@ -16,9 +16,9 @@ int main(int argc, char *argv[]) {
     #ifdef __WIN32
         run_result = system((filename + ".exe").c_str());
     #elif __APPLE__ || __MACH__
-        run_result = system(("./"+filename+).c_str());
+        run_result = system(("./"+filename).c_str());
     #elif __linux__
-        run_result = system(("./"+filename+).c_str());
+        run_result = system(("./"+filename).c_str());
     #endif
     auto end_time = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
