@@ -5,7 +5,7 @@ import tqdm
 if(len(sys.argv)==1):
     testcase_num=1e5/5
 else:
-    testcase_num=sys.argv[1]
+    testcase_num=int(sys.argv[1])
 yInsertionSort=[]
 yMergeSort=[]
 yStlSort=[]
